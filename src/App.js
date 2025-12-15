@@ -8,12 +8,12 @@ function App() {
   /*Start of the events */
 
   const [events, setEvents] = useState([
-    { id: 1, category: 'Math', date: 'March 3, 2026', description: 'IU Indianapolis math contest', location: 'IU Indianapolis School of Science' },
-    { id: 2, category: 'Computer Science', date: 'November 3, 2025', description: 'CSforGood Competition', location: 'Castle High School' },
-    { id: 3, category: 'Literature', date: 'January 21, 2025', description: 'Indiana Statewide Writing Contest', location: 'harrison county library' },
-    { id: 4, category: 'Physics', date: 'February 1, 2025', description: 'IU Northwest Science Olympiad 2025', location: 'IU Northwest' },
-    { id: 5, category: 'Math', date: 'February 14, 2026', description: 'Indiana MATHCOUNTS', location: 'Purdue University, Fort Wayne' },
-    { id: 6, category: 'Computer Science', date: 'November 17, 2025', description: 'IndySCC', location: 'Saint louis' },
+    { id: 1, category: 'Math', date: 'March 3, 2026', description: 'IU Indianapolis math contest', location: 'IU Indianapolis School of Science', image: '../public/IUPhoto.PNG'},
+    { id: 2, category: 'Computer Science', date: 'November 3, 2025', description: 'CSforGood Competition', location: 'Castle High School', image: '../public/nextTech.PNG' },
+    { id: 3, category: 'Literature', date: 'January 21, 2025', description: 'Indiana Statewide Writing Contest', location: 'harrison county library', image: '../public/harrisonLibrary.PNG' },
+    { id: 4, category: 'Physics', date: 'February 1, 2025', description: 'IU Northwest Science Olympiad 2025', location: 'IU Northwest', image: '../public/IUphoto.PNG' },
+    { id: 5, category: 'Math', date: 'February 14, 2026', description: 'Indiana MATHCOUNTS', location: 'Purdue University, Fort Wayne', image: '../public/mathCounts.PNG' },
+    { id: 6, category: 'Computer Science', date: 'November 17, 2025', description: 'IndySCC', location: 'Saint louis', image: '../public/SaintLouis.PNG' },
   ]);
 
   const categories = ['Math', 'Computer Science', 'Literature', 'Physics', ];
@@ -60,10 +60,17 @@ function App() {
         <section className="media">
           <h2 className="mediaheader">Upcoming events</h2>
           <div className="media-grid"> 
-            {/*check for events */}
+            {/*check for events to create cards*/}
             {filteredEvents.length > 0 ? (
               filteredEvents.map(event => (
                 <div className="media-card" key={event.id}>
+                  <div className="card-image-container">
+                    <img 
+                      src={event.image} 
+                      alt={event.description}
+                      className="card-image"
+                    />
+                    </div>
                   <h3>{event.category}</h3>
                   <div className="card-date">{event.date}</div>
                   <p className="card-desc">{event.description}</p>
@@ -89,6 +96,7 @@ function App() {
 
           <div className="searchfilter">
             <div className="filterheader">Filter by Category</div>
+            {/* map through the categories to create checkboxes*/}
             {categories.map((category, index) => (
               <div className="filteroption" key={index}>
                 <input 
