@@ -1,38 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+        
+body {
+    background-color: #f0f2f5;
+    color: #333;
+}
+
 .App {
-  text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* all header things*/
+header {
+    background: linear-gradient(135deg, #0A85ED, #0066cc);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.picicon{
+    background-color: #2c3e50;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.picicon:hover {
+    transform: scale(1.05);
+}
+.update{
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+.update:hover {
+    background-color: #34495e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+/* end of headers*/
+
+/* start of the two bodies in the container */
+.container {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - 140px);
+}
+/* events side called media*/
+.media {
+    margin-bottom: 20px;
+    width: 80%;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+.mediaheader {
+    padding: 15px 20px;
+    color: white;
+    background: #0A85ED;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+.media-card{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    border: 5px solid #0066cc;
+}
+.media-card:hover {
+    transform: translateY(-5px);
+}
+.card-image-container {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.media-card h3 {
+    color: #0A85ED;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+.card-date{
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+.card-desc{
+    color: #2c3e50;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+.no-events {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 18px;
+}
+/* search bar called search class*/
+.search {
+    width: 20%;
+    min-width: 250px;
+    padding: 20px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+}
+.search h2 {
+    margin-bottom: 20px;
+    color: white;
+    font-size: 1.5rem;
+}
+.searchbox {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    background-color: white;
+
+}
+.searchbox:focus {
+    outline: 2px solid #0A85ED;
+    outline-offset: -2px;
+}
+.searchfilter {
+    margin-top: 20px;
+}
+.filterheader {
+    margin-bottom: 15px;
+    color: #f1c40f;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.filteroption {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.filteroption input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.filteroption label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #ecf0f1;
+}
+/*the footer*/
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: auto;
+}
+footer p {
+    margin: 5px 0;
+    color: #bdc3c7;
+}
+
+/* Responsive Design, should now work with smaller screen*/
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+    .media, .search {
+        width: 100%;
+    }
+    .search {
+        min-width: 100%;
+        order: -1;
+    }
+    .media-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    .header-right {
+        width: 100%;
+        justify-content: center;
+    }
+    .media-grid {
+        grid-template-columns: 1fr;
+    }
 }
