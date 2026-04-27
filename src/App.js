@@ -30,7 +30,7 @@ function App() {
       const eventsWithIds = data.map((event, index) => ({
         ...event,
         id: index + 1,
-        image: event.image || getDefaultImage(event.category)
+        image: event.image 
       }));
       // sort events, check if backend is running
       setEvents(eventsWithIds);
